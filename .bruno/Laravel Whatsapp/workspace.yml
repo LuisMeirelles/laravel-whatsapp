@@ -1,0 +1,14 @@
+opencollection: 1.0.0
+info:
+  name: "Laravel Whatsapp"
+  type: workspace
+
+collections:
+  - name: "App"
+    path: "collections/App"
+  - name: "WhatsApp Cloud API"
+    path: "collections/WhatsApp Cloud API"
+
+specs:
+
+docs: ''

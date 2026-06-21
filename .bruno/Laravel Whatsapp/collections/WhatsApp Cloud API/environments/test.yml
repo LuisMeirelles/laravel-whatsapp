@@ -1,0 +1,12 @@
+name: test
+variables:
+  - name: Version
+    value: v25.0
+  - name: Phone-Number-ID
+    value: "1234724803048239"
+  - name: Recipient-WA-ID
+    value: "5548992076381"
+  - secret: true
+    name: User-Access-Token
+  - name: Recipient-Phone-Number
+    value: "{{Recipient-WA-ID}}"
