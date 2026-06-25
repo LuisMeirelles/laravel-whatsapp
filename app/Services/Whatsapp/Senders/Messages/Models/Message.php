@@ -2,11 +2,23 @@
 
 namespace App\Services\Whatsapp\Senders\Messages\Models;
 
-readonly class Message
+use App\Services\Whatsapp\Senders\Messages\Models\Traits\HasGateway;
+
+class Message
 {
+    use HasGateway;
+
     public function __construct(
-        public string $id,
-        public string $to,
-        public string $text,
+        readonly public string $id,
+        readonly public string $to,
+        readonly public string $text,
     ) {}
+
+    /**
+     * @throws \App\Exceptions\WhatsappException
+     */
+    public function reply(string $text): Reply
+    {
+        return Reply::to($this->to, $text, $this->id);
+    }
 }

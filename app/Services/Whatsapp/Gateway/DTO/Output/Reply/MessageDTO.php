@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Whatsapp\Gateway\DTO\Output;
+namespace App\Services\Whatsapp\Gateway\DTO\Output\Reply;
 
 readonly class MessageDTO
 {
