@@ -2,6 +2,7 @@
 
 namespace App\Services\Whatsapp;
 
+use App\Services\Whatsapp\Senders\MessageSender;
 use App\Services\Whatsapp\Gateway\DTO\Input\SendMessageDTO;
 use App\Services\Whatsapp\Gateway\WhatsappGateway;
 
@@ -23,5 +24,10 @@ readonly class WhatsappService
         ));
 
         return $response->messages->first()->id ?? '';
+    }
+
+    public function message(): MessageSender
+    {
+        return app(MessageSender::class);
     }
 }
