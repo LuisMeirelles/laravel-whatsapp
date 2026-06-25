@@ -19,12 +19,13 @@ class SendMessageCommand extends Command
         $text = $this->option('text');
         $to = $this->option('to');
 
-        $messageId = $service->message()
+        $message = $service->message()
             ->to($to)
             ->text($text)
             ->send();
 
         $this->info('Message sent successfully.');
-        $this->table(['Message ID', 'Message', 'To'], [[$messageId, $text, $to]]);
+        $this->newLine();
+        $this->table(['Message ID', 'Message', 'To'], [[$message->id, $message->text, $message->to]]);
     }
 }

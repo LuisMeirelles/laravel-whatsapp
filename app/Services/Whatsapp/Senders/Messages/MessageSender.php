@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services\Whatsapp\Senders;
+namespace App\Services\Whatsapp\Senders\Messages;
 
 use App\Services\Whatsapp\Gateway\DTO\Input\SendMessageDTO;
 use App\Services\Whatsapp\Gateway\WhatsappGateway;
+use App\Services\Whatsapp\Senders\Messages\Models\Message;
 
 readonly class MessageSender
 {
@@ -35,7 +36,7 @@ readonly class MessageSender
     /**
      * @throws \App\Exceptions\WhatsappException
      */
-    public function send(): string
+    public function send(): Message
     {
         $response = $this->gateway->sendMessage(new SendMessageDTO(
             phoneNumber: $this->to,
@@ -43,6 +44,10 @@ readonly class MessageSender
             previewUrl: false,
         ));
 
-        return $response->messages->first()->id;
+        return new Message(
+            id: $response->messages->first()->id,
+            to: $this->to,
+            text: $this->text,
+        );
     }
 }
