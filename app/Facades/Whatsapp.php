@@ -2,11 +2,11 @@
 
 namespace App\Facades;
 
-use App\Services\WhatsappService;
+use App\Services\Whatsapp\WhatsappService;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \App\Services\WhatsappService
+ * @see \app\Services\Whatsapp\WhatsappService
  */
 class Whatsapp extends Facade
 {
