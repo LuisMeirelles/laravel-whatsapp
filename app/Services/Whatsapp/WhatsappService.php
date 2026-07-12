@@ -2,6 +2,7 @@
 
 namespace App\Services\Whatsapp;
 
+use App\Events\DTO\Shared\MessagesDTO;
 use App\Services\Whatsapp\Events\EventsManager;
 use App\Services\Whatsapp\Senders\Messages\MessageSender;
 
@@ -17,6 +18,9 @@ readonly class WhatsappService
         return $this->messageSender;
     }
 
+    /**
+     * @param callable(MessagesDTO): void $callback
+     */
     public function onMessage(callable $callback): void
     {
         $this->eventsManager->push($callback);

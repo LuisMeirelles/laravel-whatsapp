@@ -11,6 +11,6 @@ readonly class CallWhatsappEventsManagerListener
 
     public function handle(WhatsappMessageReceivedEvent $event): void
     {
-        $this->whatsappEventsManager->notify($event->data);
+        $this->whatsappEventsManager->notify($event->message);
     }
 }
