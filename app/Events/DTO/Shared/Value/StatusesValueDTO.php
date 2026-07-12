@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Events\DTO\Shared;
+namespace App\Events\DTO\Shared\Value;
 
+use App\Events\DTO\Shared\MakesFromArray;
+use App\Events\DTO\Shared\StatusDTO;
 use Illuminate\Support\Collection;
 
 readonly class StatusesValueDTO extends ValueDTO

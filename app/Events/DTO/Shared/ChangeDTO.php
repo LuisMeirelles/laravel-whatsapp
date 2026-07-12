@@ -2,7 +2,9 @@
 
 namespace App\Events\DTO\Shared;
 
-use Illuminate\Support\Arr;
+use App\Events\DTO\Shared\Value\MessagesValueDTO;
+use App\Events\DTO\Shared\Value\StatusesValueDTO;
+use App\Events\DTO\Shared\Value\ValueDTO;
 
 readonly class ChangeDTO
 {
@@ -15,12 +17,6 @@ readonly class ChangeDTO
     {
         $this->field = $data['field'];
 
-        $value = $data['value'];
-
-        if (Arr::has($data, 'value.messages')) {
-            $this->value = MessagesValueDTO::make($value);
-        } else if (Arr::has($data, 'value.statuses')) {
-            $this->value = StatusesValueDTO::make($value);
-        }
+        $this->value = ValueDTO::make($data['value']);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Events\DTO\Shared;
 
 use Illuminate\Support\Collection;
 
-readonly class MessagesDTO
+readonly class WebhookPayloadDTO
 {
     use MakesFromArray;
 

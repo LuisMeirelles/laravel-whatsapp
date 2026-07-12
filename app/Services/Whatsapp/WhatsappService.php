@@ -2,7 +2,7 @@
 
 namespace App\Services\Whatsapp;
 
-use App\Events\DTO\Shared\MessagesDTO;
+use App\Events\DTO\Shared\WebhookPayloadDTO;
 use App\Services\Whatsapp\Events\EventsManager;
 use App\Services\Whatsapp\Senders\Messages\MessageSender;
 
@@ -19,7 +19,7 @@ readonly class WhatsappService
     }
 
     /**
-     * @param callable(MessagesDTO): void $callback
+     * @param callable(WebhookPayloadDTO): void $callback
      */
     public function onMessage(callable $callback): void
     {

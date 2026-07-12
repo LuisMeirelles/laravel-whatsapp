@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Events\DTO\Shared;
+namespace App\Events\DTO\Shared\Value;
 
+use App\Events\DTO\Shared\MakesFromArray;
+use App\Events\DTO\Shared\MessageDTO;
 use Illuminate\Support\Collection;
 
 readonly class MessagesValueDTO extends ValueDTO

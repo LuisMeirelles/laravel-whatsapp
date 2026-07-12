@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Events\DTO\Shared;
+namespace App\Events\DTO\Shared\Value;
 
+use App\Events\DTO\Shared\ContactDTO;
+use App\Events\DTO\Shared\MetadataDTO;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 readonly class ValueDTO
 {
-    use MakesFromArray;
-
     public string $messagingProduct;
     public MetadataDTO $metadata;
 
@@ -23,9 +23,9 @@ readonly class ValueDTO
     }
 
     public static function make(array $data): MessagesValueDTO|StatusesValueDTO|static {
-        if (Arr::has($data, 'value.messages')) {
+        if (Arr::has($data, 'messages')) {
             return MessagesValueDTO::make($data);
-        } else if (Arr::has($data, 'value.statuses')) {
+        } else if (Arr::has($data, 'statuses')) {
             return StatusesValueDTO::make($data);
         }
 
