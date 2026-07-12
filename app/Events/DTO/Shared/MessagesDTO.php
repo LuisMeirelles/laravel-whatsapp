@@ -6,10 +6,16 @@ use Illuminate\Support\Collection;
 
 readonly class MessagesDTO
 {
-    public function __construct(
-        public string     $object,
+    use MakesFromArray;
 
-        /** @var Collection<int, EntryDTO> */
-        public Collection $entry,
-    ) {}
+    public string $object;
+
+    /** @var Collection<int, EntryDTO> */
+    public Collection $entry;
+
+    public function __construct(array $data)
+    {
+        $this->object = $data['object'];
+        $this->entry = collect($data['entry'])->mapInto(EntryDTO::class);
+    }
 }

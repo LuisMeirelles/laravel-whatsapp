@@ -4,7 +4,12 @@ namespace App\Events\DTO\Shared;
 
 readonly class ProfileDTO
 {
-    public function __construct(
-        public string $name,
-    ) {}
+    use MakesFromArray;
+
+    public string $name;
+
+    public function __construct(array $data)
+    {
+        $this->name = $data['name'];
+    }
 }

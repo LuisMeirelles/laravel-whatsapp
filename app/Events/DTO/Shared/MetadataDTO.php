@@ -2,15 +2,16 @@
 
 namespace App\Events\DTO\Shared;
 
-/**
- * {
-          "display_phone_number": "16505551111",
-          "phone_number_id": "123456123"
-        }
- */
-readonly class MetadataDTO {
-    public function __construct(
-        public string $displayPhoneNumber,
-        public string $phoneNumberId,
-    ) {}
+readonly class MetadataDTO
+{
+    use MakesFromArray;
+
+    public string $displayPhoneNumber;
+    public string $phoneNumberId;
+
+    public function __construct(array $data)
+    {
+        $this->displayPhoneNumber = $data['display_phone_number'];
+        $this->phoneNumberId = $data['phone_number_id'];
+    }
 }

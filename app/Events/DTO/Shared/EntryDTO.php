@@ -6,10 +6,16 @@ use Illuminate\Support\Collection;
 
 readonly class EntryDTO
 {
-    public function __construct(
-        public string     $id,
+    use MakesFromArray;
 
-        /** @var Collection<int, ChangeDTO> */
-        public Collection $changes,
-    ) {}
+    public string     $id;
+
+    /** @var Collection<int, ChangeDTO> */
+    public Collection $changes;
+
+    public function __construct(array $data)
+    {
+        $this->id = $data['id'];
+        $this->changes = collect($data['changes'])->mapInto(ChangeDTO::class);
+    }
 }
