@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Whatsapp\Events\EventsManager;
 use App\Services\Whatsapp\Gateway\WhatsappGateway;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +18,11 @@ class WhatsappServiceProvider extends ServiceProvider
                 phoneId: config('waba.phone_number_id'),
                 version: config('waba.version'),
             )
+        );
+
+        $this->app->singleton(
+            EventsManager::class,
+            fn() => new EventsManager()
         );
     }
 

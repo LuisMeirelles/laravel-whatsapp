@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Whatsapp\WhatsappService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        app(WhatsappService::class)->onMessage(function (array $data) {
+            logger()->debug('Whatsapp message received', $data);
+        });
     }
 }
